@@ -26,8 +26,9 @@
 <body ng-app = "MyApp" ng-controller = "MyCtrl">
     <div class="container">
         <div class="jumbotron">
+            <img src="img/girlwithmask.png" alt="girlwithmask">
             <h1 class = "text-center">{{title}}</h1>
-            <p style="text-align: justify; padding-top: 25px;"> 
+            <p style="text-align: justify; padding-top: 25px; padding-bottom: 25px;"> 
                 The coronavirus pandemic has led to unprecedented panic across the world. With no vaccine immediately available,
                 the concern over the deadly virus increases with each passing day. It has taken a toll on people's mental 
                 health what with schools, playgrounds, malls, theatres and almost every other public space closed for the public. 
@@ -38,11 +39,12 @@
                 this too shall pass.
             </p>
 
-            <button ng-click = "changeValue()"> btn </button>
+            
 
             <!--All data-->
             <!-- we do ".row>.col-md-4*3" means 1 row, which has 3 columns. In one row we get to make
                  12 columns maximum, therefore we need 3 columns so division of 4. Hence md-4-->
+            <h1 class="text-center my-4">TOAL COVID CASES </h1>
             <div class="row">
                 <div class="col-md-4 text-center" >
                     <div class="card bg-warning text-white">
@@ -52,7 +54,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 text-center">
+                <div class="col-md-4 text-center ">
                     <div class="card bg-success text-white">
                         <div class="card-body">
                             <h3>Recovered Cases</h3>
@@ -80,7 +82,7 @@
                 function "getCountryData" whenever there is any sort of change detected in the input-->
             <input type = "text",
                 class = "form-control mt-4"
-                placeholder="enter country"
+                placeholder="Enter Country"
                 ng-model = "c"
                 ng-change = "getCountryData()">
 
@@ -88,13 +90,16 @@
 
 
 
-            <!--c data-->   
-            <div class="row">
+            <!--c data-->  
+            <div class="container-fluid" ng-if ="c_data"> 
+            <h1 class="text-center text-uppercase mt-3 my-3">{{c}} STATUS</h1>
+            <!-- ng-if = "c_data" means if there's some data in c_data, only then the row will be visible-->
+            <div class="row" >
                 <div class="col-md-4 text-center" >
                     <div class="card bg-warning text-white">
                         <div class="card-body">
                             <h3>Confirmed Cases</h3>
-                            <h3>{{all_data.confirmed.value}}</h3>
+                            <h3>{{c_data.confirmed.value}}</h3>
                         </div>
                     </div>
                 </div>
@@ -102,7 +107,7 @@
                     <div class="card bg-success text-white">
                         <div class="card-body">
                             <h3>Recovered Cases</h3>
-                            <h3>{{all_data.recovered.value}}</h3>
+                            <h3>{{c_data.recovered.value}}</h3>
                         </div>
                     </div>
                 </div>
@@ -110,10 +115,11 @@
                     <div class="card bg-danger text-white">
                         <div class="card-body">
                             <h3>Death Cases</h3>
-                            <h3>{{all_data.deaths.value}}</h3>
+                            <h3>{{c_data.deaths.value}}</h3>
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
 
             <!-- end c data-->
